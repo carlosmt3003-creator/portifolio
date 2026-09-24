@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Moreira Doces & Gelados</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/Moreira.jpeg" type="image/x-icon">
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <h1>Moreira Doces & Gelados</h1>
+            <p>Controle de vendas, gastos e estoque</p>
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- RESUMO -->
+
+        <section class="resumo">
+
+            <div class="card">
+                <span>Faturamento</span>
+                <strong id="faturamento">R$ 0,00</strong>
+            </div>
+
+            <div class="card">
+                <span>Gastos</span>
+                <strong id="totalGastos">R$ 0,00</strong>
+            </div>
+
+            <div class="card">
+                <span>Lucro</span>
+                <strong id="lucro">R$ 0,00</strong>
+            </div>
+
+            <div class="card">
+                <span>Itens em estoque</span>
+                <strong id="totalEstoque">0</strong>
+            </div>
+
+        </section>
+
+
+        <!-- FORMULÁRIOS -->
+
+        <section class="formularios">
+
+            <!-- VENDA -->
+
+            <div class="caixa">
+
+                <h2>Registrar venda</h2>
+
+                <form id="formVenda">
+
+                    <label for="produtoVenda">
+                        Produto
+                    </label>
+
+                    <input
+                        type="text"
+                        id="produtoVenda"
+                        placeholder="Ex: Chupa-chupa"
+                        required
+                    >
+
+                    <label for="quantidadeVenda">
+                        Quantidade
+                    </label>
+
+                    <input
+                        type="number"
+                        id="quantidadeVenda"
+                        min="1"
+                        placeholder="Ex: 5"
+                        required
+                    >
+
+                    <label for="valorVenda">
+                        Valor total da venda
+                    </label>
+
+                    <input
+                        type="number"
+                        id="valorVenda"
+                        min="0.01"
+                        step="0.01"
+                        placeholder="Ex: 10.00"
+                        required
+                    >
+
+                    <button type="submit">
+                        Registrar venda
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- GASTO -->
+
+            <div class="caixa">
+
+                <h2>Registrar gasto</h2>
+
+                <form id="formGasto">
+
+                    <label for="descricaoGasto">
+                        Descrição
+                    </label>
+
+                    <input
+                        type="text"
+                        id="descricaoGasto"
+                        placeholder="Ex: Leite condensado"
+                        required
+                    >
+
+                    <label for="valorGasto">
+                        Valor
+                    </label>
+
+                    <input
+                        type="number"
+                        id="valorGasto"
+                        min="0.01"
+                        step="0.01"
+                        placeholder="Ex: 15.00"
+                        required
+                    >
+
+                    <button type="submit">
+                        Registrar gasto
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- ESTOQUE -->
+
+            <div class="caixa">
+
+                <h2>Adicionar ao estoque</h2>
+
+                <form id="formEstoque">
+
+                    <label for="produtoEstoque">
+                        Produto
+                    </label>
+
+                    <input
+                        type="text"
+                        id="produtoEstoque"
+                        placeholder="Ex: Chupa-chupa"
+                        required
+                    >
+
+                    <label for="quantidadeEstoque">
+                        Quantidade
+                    </label>
+
+                    <input
+                        type="number"
+                        id="quantidadeEstoque"
+                        min="1"
+                        placeholder="Ex: 20"
+                        required
+                    >
+
+                    <button type="submit">
+                        Adicionar estoque
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- ESTOQUE -->
+
+        <section class="caixa estoque">
+
+            <div class="titulo-secao">
+                <h2>Estoque</h2>
+
+                <button id="btnLimparEstoque" class="btn-perigo">
+                    Limpar estoque
+                </button>
+            </div>
+
+            <div id="listaEstoque" class="lista-estoque">
+                <!-- Estoque será criado pelo JavaScript -->
+            </div>
+
+        </section>
+
+
+        <!-- GRÁFICO -->
+
+        <section class="caixa grafico">
+
+            <h2>Resumo financeiro</h2>
+
+            <div class="grafico-area">
+
+                <div class="barra-item">
+
+                    <div class="barra-info">
+                        <span>Faturamento</span>
+                        <strong id="valorGraficoVenda">R$ 0,00</strong>
+                    </div>
+
+                    <div class="barra-fundo">
+                        <div
+                            id="barraVenda"
+                            class="barra venda"
+                        ></div>
+                    </div>
+
+                </div>
+
+
+                <div class="barra-item">
+
+                    <div class="barra-info">
+                        <span>Gastos</span>
+                        <strong id="valorGraficoGasto">R$ 0,00</strong>
+                    </div>
+
+                    <div class="barra-fundo">
+                        <div
+                            id="barraGasto"
+                            class="barra gasto"
+                        ></div>
+                    </div>
+
+                </div>
+
+
+                <div class="barra-item">
+
+                    <div class="barra-info">
+                        <span>Lucro</span>
+                        <strong id="valorGraficoLucro">R$ 0,00</strong>
+                    </div>
+
+                    <div class="barra-fundo">
+                        <div
+                            id="barraLucro"
+                            class="barra lucro"
+                        ></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HISTÓRICO -->
+
+        <section class="caixa historico">
+
+            <div class="titulo-secao">
+
+                <h2>Histórico</h2>
+
+                <button
+                    id="btnLimparHistorico"
+                    class="btn-perigo"
+                >
+                    Limpar histórico
+                </button>
+
+            </div>
+
+
+            <div class="tabela-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Valor</th>
+                            <th>Ação</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="listaHistorico">
+
+                        <!-- Registros aparecerão aqui -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        Moreira Doces & Gelados
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+
