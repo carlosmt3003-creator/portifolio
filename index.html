@@ -1,7 +1,5 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,570 +11,338 @@
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
 
-    <header class="topo">
+    <aside class="sidebar">
 
         <div class="logo-area">
-
-            <div class="logo">
-                MD
-            </div>
+            <div class="logo">M</div>
 
             <div>
                 <h1>Moreira</h1>
                 <span>Doces & Gelados</span>
             </div>
-
         </div>
 
+        <nav class="menu">
 
-        <div class="data-atual">
+            <button class="menu-item ativo" data-secao="dashboard">
+                <span>▦</span>
+                Dashboard
+            </button>
 
-            <span>Controle financeiro</span>
+            <button class="menu-item" data-secao="vendas">
+                <span>▣</span>
+                Vendas
+            </button>
 
-            <strong id="dataAtual">
-                --
-            </strong>
+            <button class="menu-item" data-secao="gastos">
+                <span>▤</span>
+                Gastos
+            </button>
 
+            <button class="menu-item" data-secao="estoque">
+                <span>▥</span>
+                Estoque
+            </button>
+
+            <button class="menu-item" data-secao="configuracoes">
+                <span>⚙</span>
+                Configurações
+            </button>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <span>Sistema de controle</span>
+            <strong>Moreira Doces</strong>
         </div>
 
-    </header>
+    </aside>
 
 
-    <!-- ================= MENU ================= -->
+    <!-- =========================
+         CONTEÚDO
+    ========================== -->
 
-    <nav class="menu">
+    <main class="conteudo">
 
-        <button class="menu-item ativo" data-secao="dashboard">
-            <span>▦</span>
-            Dashboard
-        </button>
+        <header class="topo">
 
-        <button class="menu-item" data-secao="vendas">
-            <span>↗</span>
-            Vendas
-        </button>
+            <div>
+                <span class="subtitulo">Painel administrativo</span>
+                <h2>Moreira Doces & Gelados</h2>
+            </div>
 
-        <button class="menu-item" data-secao="gastos">
-            <span>↘</span>
-            Gastos
-        </button>
+            <div class="data-atual">
+                <span>Hoje</span>
+                <strong id="dataAtual">--/--/----</strong>
+            </div>
 
-        <button class="menu-item" data-secao="estoque">
-            <span>▣</span>
-            Estoque
-        </button>
-
-        <button class="menu-item" data-secao="configuracoes">
-            <span>⚙</span>
-            Configurações
-        </button>
-
-    </nav>
+        </header>
 
 
-    <!-- ================= CONTEÚDO ================= -->
-
-    <main>
-
-
-        <!-- ==================================================
+        <!-- =========================
              DASHBOARD
-        ================================================== -->
+        ========================== -->
 
         <section id="dashboard" class="secao ativa">
 
-            <div class="cabecalho-secao">
-
+            <div class="titulo-secao">
                 <div>
+                    <span class="subtitulo">Visão geral</span>
+                    <h3>Dashboard</h3>
+                </div>
 
-                    <span class="mini-titulo">
-                        VISÃO GERAL
-                    </span>
+                <select id="mesSelecionado">
+                </select>
+            </div>
 
-                    <h2>
-                        Dashboard financeiro
-                    </h2>
 
-                    <p>
-                        Acompanhe o desempenho do seu negócio.
+            <div class="cards">
+
+                <div class="card financeiro">
+                    <span>Faturamento</span>
+                    <strong id="faturamentoMes">R$ 0,00</strong>
+                    <small id="quantidadeVendas">0 vendas</small>
+                </div>
+
+                <div class="card gastos">
+                    <span>Gastos</span>
+                    <strong id="gastosMes">R$ 0,00</strong>
+                    <small id="quantidadeGastos">0 gastos</small>
+                </div>
+
+                <div class="card lucro">
+                    <span>Lucro</span>
+                    <strong id="lucroMes">R$ 0,00</strong>
+                    <small id="margemLucro">0% de margem</small>
+                </div>
+
+                <div class="card estoque-card">
+                    <span>Estoque</span>
+                    <strong id="quantidadeEstoque">0</strong>
+                    <small id="produtosEstoque">0 produtos</small>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="painel grafico-painel">
+
+                    <div class="painel-topo">
+                        <div>
+                            <span class="subtitulo">Desempenho financeiro</span>
+                            <h3>Resumo do mês</h3>
+                        </div>
+                    </div>
+
+                    <div id="grafico" class="grafico">
+                    </div>
+
+                </div>
+
+
+                <div class="painel meta-painel">
+
+                    <div class="painel-topo">
+                        <div>
+                            <span class="subtitulo">Objetivo</span>
+                            <h3>Meta mensal</h3>
+                        </div>
+                    </div>
+
+                    <div class="meta-valor">
+                        <strong id="metaFaturado">R$ 0,00</strong>
+                        <span id="metaValor">Meta: R$ 0,00</span>
+                    </div>
+
+                    <div class="barra">
+                        <div id="barraMeta"></div>
+                    </div>
+
+                    <div class="meta-info">
+                        <strong id="porcentagemMeta">0%</strong>
+                        <span id="faltaMeta">Faltam R$ 0,00</span>
+                    </div>
+
+                    <div id="statusMeta" class="status">
+                        Defina uma meta nas configurações.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid inferior">
+
+                <div class="painel">
+
+                    <div class="painel-topo">
+                        <div>
+                            <span class="subtitulo">Movimentações</span>
+                            <h3>Últimas movimentações</h3>
+                        </div>
+                    </div>
+
+                    <div id="ultimasMovimentacoes" class="movimentacoes">
+                    </div>
+
+                </div>
+
+
+                <div class="painel saude">
+
+                    <div class="painel-topo">
+                        <div>
+                            <span class="subtitulo">Análise</span>
+                            <h3>Saúde financeira</h3>
+                        </div>
+                    </div>
+
+                    <div class="indicador" id="indicadorSaude">
+                        —
+                    </div>
+
+                    <h4 id="textoSaude">Sem dados</h4>
+
+                    <p id="descricaoSaude">
+                        Registre vendas e gastos para visualizar sua situação financeira.
                     </p>
 
                 </div>
 
-
-                <div class="seletor-mes">
-
-                    <label for="mesSelecionado">
-                        Período
-                    </label>
-
-                    <input
-                        type="month"
-                        id="mesSelecionado"
-                    >
-
-                </div>
-
             </div>
-
-
-            <!-- ================= CARDS ================= -->
-
-            <div class="cards-financeiros">
-
-
-                <article class="card financeiro faturamento">
-
-                    <div class="card-topo">
-
-                        <span>
-                            FATURAMENTO
-                        </span>
-
-                        <div class="icone">
-                            $
-                        </div>
-
-                    </div>
-
-                    <strong id="faturamentoMes">
-                        R$ 0,00
-                    </strong>
-
-                    <div class="card-rodape">
-
-                        <span>
-                            Vendas realizadas
-                        </span>
-
-                        <b id="quantidadeVendas">
-                            0
-                        </b>
-
-                    </div>
-
-                </article>
-
-
-                <article class="card financeiro gastos">
-
-                    <div class="card-topo">
-
-                        <span>
-                            GASTOS
-                        </span>
-
-                        <div class="icone">
-                            −
-                        </div>
-
-                    </div>
-
-                    <strong id="gastosMes">
-                        R$ 0,00
-                    </strong>
-
-                    <div class="card-rodape">
-
-                        <span>
-                            Despesas registradas
-                        </span>
-
-                        <b id="quantidadeGastos">
-                            0
-                        </b>
-
-                    </div>
-
-                </article>
-
-
-                <article class="card financeiro lucro">
-
-                    <div class="card-topo">
-
-                        <span>
-                            LUCRO
-                        </span>
-
-                        <div class="icone">
-                            ↑
-                        </div>
-
-                    </div>
-
-                    <strong id="lucroMes">
-                        R$ 0,00
-                    </strong>
-
-                    <div class="card-rodape">
-
-                        <span>
-                            Resultado do mês
-                        </span>
-
-                        <b id="margemLucro">
-                            0%
-                        </b>
-
-                    </div>
-
-                </article>
-
-
-                <article class="card financeiro estoque-card">
-
-                    <div class="card-topo">
-
-                        <span>
-                            ESTOQUE
-                        </span>
-
-                        <div class="icone">
-                            #
-                        </div>
-
-                    </div>
-
-                    <strong id="quantidadeEstoque">
-                        0
-                    </strong>
-
-                    <div class="card-rodape">
-
-                        <span>
-                            Unidades disponíveis
-                        </span>
-
-                        <b id="produtosEstoque">
-                            0 produtos
-                        </b>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-
-            <!-- ================= META ================= -->
-
-            <div class="grid-dashboard">
-
-
-                <article class="painel meta-painel">
-
-                    <div class="painel-header">
-
-                        <div>
-
-                            <span class="mini-titulo">
-                                OBJETIVO
-                            </span>
-
-                            <h3>
-                                Meta mensal
-                            </h3>
-
-                        </div>
-
-                        <span
-                            id="statusMeta"
-                            class="status-meta"
-                        >
-                            Em andamento
-                        </span>
-
-                    </div>
-
-
-                    <div class="meta-valores">
-
-                        <div>
-
-                            <span>
-                                Faturado
-                            </span>
-
-                            <strong id="metaFaturado">
-                                R$ 0,00
-                            </strong>
-
-                        </div>
-
-                        <div class="meta-alvo">
-
-                            <span>
-                                Meta
-                            </span>
-
-                            <strong id="metaValor">
-                                R$ 1.000,00
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="progresso">
-
-                        <div
-                            id="barraMeta"
-                            class="progresso-barra"
-                        ></div>
-
-                    </div>
-
-
-                    <div class="progresso-info">
-
-                        <span>
-                            <b id="porcentagemMeta">
-                                0%
-                            </b>
-                            da meta alcançada
-                        </span>
-
-                        <span id="faltaMeta">
-                            Faltam R$ 1.000,00
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-                <!-- ================= RESUMO ================= -->
-
-                <article class="painel resumo-painel">
-
-                    <div class="painel-header">
-
-                        <div>
-
-                            <span class="mini-titulo">
-                                RESULTADO
-                            </span>
-
-                            <h3>
-                                Saúde financeira
-                            </h3>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="saude">
-
-                        <div
-                            id="indicadorSaude"
-                            class="indicador-saude"
-                        >
-                            —
-                        </div>
-
-                        <div>
-
-                            <strong id="textoSaude">
-                                Sem movimentação
-                            </strong>
-
-                            <p id="descricaoSaude">
-                                Registre vendas e gastos para acompanhar seu resultado.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-
-            <!-- ================= GRÁFICO ================= -->
-
-            <article class="painel grafico-painel">
-
-                <div class="painel-header">
-
-                    <div>
-
-                        <span class="mini-titulo">
-                            ANÁLISE
-                        </span>
-
-                        <h3>
-                            Desempenho financeiro
-                        </h3>
-
-                    </div>
-
-
-                    <div class="legenda">
-
-                        <span>
-                            <i class="legenda-venda"></i>
-                            Faturamento
-                        </span>
-
-                        <span>
-                            <i class="legenda-gasto"></i>
-                            Gastos
-                        </span>
-
-                        <span>
-                            <i class="legenda-lucro"></i>
-                            Lucro
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div
-                    id="grafico"
-                    class="grafico"
-                >
-                    <!-- JavaScript cria o gráfico -->
-                </div>
-
-            </article>
-
-
-            <!-- ================= ÚLTIMAS MOVIMENTAÇÕES ================= -->
-
-            <article class="painel">
-
-                <div class="painel-header">
-
-                    <div>
-
-                        <span class="mini-titulo">
-                            ATIVIDADE
-                        </span>
-
-                        <h3>
-                            Últimas movimentações
-                        </h3>
-
-                    </div>
-
-                    <button
-                        class="btn-link"
-                        data-secao="vendas"
-                    >
-                        Ver tudo
-                    </button>
-
-                </div>
-
-
-                <div id="ultimasMovimentacoes">
-
-                    <div class="vazio">
-                        Nenhuma movimentação registrada.
-                    </div>
-
-                </div>
-
-            </article>
 
         </section>
 
 
-
-        <!-- ==================================================
+        <!-- =========================
              VENDAS
-        ================================================== -->
+        ========================== -->
 
         <section id="vendas" class="secao">
 
-            <div class="cabecalho-secao">
+            <div class="titulo-secao">
 
                 <div>
-
-                    <span class="mini-titulo">
-                        MOVIMENTAÇÕES
-                    </span>
-
-                    <h2>
-                        Registrar venda
-                    </h2>
-
-                    <p>
-                        Registre suas vendas e acompanhe o faturamento.
-                    </p>
-
+                    <span class="subtitulo">Controle financeiro</span>
+                    <h3>Vendas</h3>
                 </div>
 
             </div>
 
 
-            <div class="formulario-painel painel">
+            <div class="painel formulario-painel">
+
+                <div class="painel-topo">
+
+                    <div>
+                        <span class="subtitulo">Nova venda</span>
+                        <h3>Registrar venda</h3>
+                    </div>
+
+                </div>
+
 
                 <form id="formVenda">
 
-                    <div class="campo">
+                    <div class="form-grid">
 
-                        <label for="produtoVenda">
-                            Produto
-                        </label>
+                        <div class="campo">
 
-                        <input
-                            type="text"
-                            id="produtoVenda"
-                            placeholder="Ex: Chupa-chupa de morango"
-                            required
-                        >
+                            <label for="codigoVenda">
+                                Código do produto
+                            </label>
+
+                            <input
+                                type="text"
+                                id="codigoVenda"
+                                placeholder="Ex: 021"
+                                maxlength="20"
+                                required
+                            >
+
+                            <div id="produtoEncontrado" class="produto-encontrado">
+                                Digite o código para localizar o produto.
+                            </div>
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="nomeProdutoVenda">
+                                Produto
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nomeProdutoVenda"
+                                placeholder="Produto"
+                                readonly
+                            >
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="precoProdutoVenda">
+                                Preço unitário
+                            </label>
+
+                            <input
+                                type="text"
+                                id="precoProdutoVenda"
+                                placeholder="R$ 0,00"
+                                readonly
+                            >
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="quantidadeVenda">
+                                Quantidade
+                            </label>
+
+                            <input
+                                type="number"
+                                id="quantidadeVenda"
+                                min="1"
+                                value="1"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="valorVenda">
+                                Total da venda
+                            </label>
+
+                            <input
+                                type="text"
+                                id="valorVenda"
+                                placeholder="R$ 0,00"
+                                readonly
+                            >
+
+                        </div>
 
                     </div>
 
 
-                    <div class="campo">
-
-                        <label for="quantidadeVenda">
-                            Quantidade
-                        </label>
-
-                        <input
-                            type="number"
-                            id="quantidadeVenda"
-                            min="1"
-                            placeholder="Ex: 5"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="campo">
-
-                        <label for="valorVenda">
-                            Valor total
-                        </label>
-
-                        <input
-                            type="number"
-                            id="valorVenda"
-                            min="0.01"
-                            step="0.01"
-                            placeholder="R$ 0,00"
-                            required
-                        >
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="btn-principal"
-                    >
+                    <button type="submit" class="botao principal">
                         Registrar venda
                     </button>
 
@@ -587,19 +353,16 @@
 
             <div class="painel tabela-painel">
 
-                <div class="painel-header">
+                <div class="painel-topo">
 
                     <div>
-
-                        <h3>
-                            Histórico de vendas
-                        </h3>
-
+                        <span class="subtitulo">Histórico</span>
+                        <h3>Vendas realizadas</h3>
                     </div>
 
-                    <span id="totalTabelaVendas">
-                        0 vendas
-                    </span>
+                    <strong id="totalTabelaVendas">
+                        R$ 0,00
+                    </strong>
 
                 </div>
 
@@ -612,10 +375,11 @@
 
                             <tr>
                                 <th>Data</th>
+                                <th>Código</th>
                                 <th>Produto</th>
                                 <th>Quantidade</th>
                                 <th>Valor</th>
-                                <th></th>
+                                <th>Ação</th>
                             </tr>
 
                         </thead>
@@ -632,76 +396,75 @@
         </section>
 
 
-
-        <!-- ==================================================
+        <!-- =========================
              GASTOS
-        ================================================== -->
+        ========================== -->
 
         <section id="gastos" class="secao">
 
-            <div class="cabecalho-secao">
+            <div class="titulo-secao">
 
                 <div>
-
-                    <span class="mini-titulo">
-                        DESPESAS
-                    </span>
-
-                    <h2>
-                        Registrar gasto
-                    </h2>
-
-                    <p>
-                        Controle os custos utilizados no seu negócio.
-                    </p>
-
+                    <span class="subtitulo">Controle financeiro</span>
+                    <h3>Gastos</h3>
                 </div>
 
             </div>
 
 
-            <div class="formulario-painel painel">
+            <div class="painel formulario-painel">
+
+                <div class="painel-topo">
+
+                    <div>
+                        <span class="subtitulo">Novo gasto</span>
+                        <h3>Registrar gasto</h3>
+                    </div>
+
+                </div>
+
 
                 <form id="formGasto">
 
-                    <div class="campo">
+                    <div class="form-grid">
 
-                        <label for="descricaoGasto">
-                            Descrição
-                        </label>
+                        <div class="campo">
 
-                        <input
-                            type="text"
-                            id="descricaoGasto"
-                            placeholder="Ex: Leite condensado"
-                            required
-                        >
+                            <label for="descricaoGasto">
+                                Descrição
+                            </label>
+
+                            <input
+                                type="text"
+                                id="descricaoGasto"
+                                placeholder="Ex: Leite condensado"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="valorGasto">
+                                Valor
+                            </label>
+
+                            <input
+                                type="number"
+                                id="valorGasto"
+                                placeholder="0,00"
+                                min="0"
+                                step="0.01"
+                                required
+                            >
+
+                        </div>
 
                     </div>
 
 
-                    <div class="campo">
-
-                        <label for="valorGasto">
-                            Valor
-                        </label>
-
-                        <input
-                            type="number"
-                            id="valorGasto"
-                            min="0.01"
-                            step="0.01"
-                            placeholder="R$ 0,00"
-                            required
-                        >
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="btn-principal"
-                    >
+                    <button type="submit" class="botao principal">
                         Registrar gasto
                     </button>
 
@@ -712,15 +475,16 @@
 
             <div class="painel tabela-painel">
 
-                <div class="painel-header">
+                <div class="painel-topo">
 
-                    <h3>
-                        Histórico de gastos
-                    </h3>
+                    <div>
+                        <span class="subtitulo">Histórico</span>
+                        <h3>Gastos registrados</h3>
+                    </div>
 
-                    <span id="totalTabelaGastos">
-                        0 gastos
-                    </span>
+                    <strong id="totalTabelaGastos">
+                        R$ 0,00
+                    </strong>
 
                 </div>
 
@@ -735,7 +499,7 @@
                                 <th>Data</th>
                                 <th>Descrição</th>
                                 <th>Valor</th>
-                                <th></th>
+                                <th>Ação</th>
                             </tr>
 
                         </thead>
@@ -752,76 +516,110 @@
         </section>
 
 
-
-        <!-- ==================================================
+        <!-- =========================
              ESTOQUE
-        ================================================== -->
+        ========================== -->
 
         <section id="estoque" class="secao">
 
-            <div class="cabecalho-secao">
+            <div class="titulo-secao">
 
                 <div>
-
-                    <span class="mini-titulo">
-                        INVENTÁRIO
-                    </span>
-
-                    <h2>
-                        Controle de estoque
-                    </h2>
-
-                    <p>
-                        Acompanhe a quantidade de produtos disponíveis.
-                    </p>
-
+                    <span class="subtitulo">Produtos</span>
+                    <h3>Estoque</h3>
                 </div>
 
             </div>
 
 
-            <div class="formulario-painel painel">
+            <div class="painel formulario-painel">
+
+                <div class="painel-topo">
+
+                    <div>
+                        <span class="subtitulo">Cadastro</span>
+                        <h3>Cadastrar produto</h3>
+                    </div>
+
+                </div>
+
 
                 <form id="formEstoque">
 
-                    <div class="campo">
+                    <div class="form-grid quatro">
 
-                        <label for="produtoEstoque">
-                            Produto
-                        </label>
+                        <div class="campo">
 
-                        <input
-                            type="text"
-                            id="produtoEstoque"
-                            placeholder="Ex: Chupa-chupa de limão"
-                            required
-                        >
+                            <label for="codigoEstoque">
+                                Código
+                            </label>
+
+                            <input
+                                type="text"
+                                id="codigoEstoque"
+                                placeholder="Ex: 021"
+                                maxlength="20"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="produtoEstoque">
+                                Produto
+                            </label>
+
+                            <input
+                                type="text"
+                                id="produtoEstoque"
+                                placeholder="Ex: Geladinho de maracujá"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="precoEstoque">
+                                Preço unitário
+                            </label>
+
+                            <input
+                                type="number"
+                                id="precoEstoque"
+                                placeholder="0,00"
+                                min="0"
+                                step="0.01"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="campo">
+
+                            <label for="quantidadeEstoqueInput">
+                                Quantidade
+                            </label>
+
+                            <input
+                                type="number"
+                                id="quantidadeEstoqueInput"
+                                placeholder="0"
+                                min="0"
+                                required
+                            >
+
+                        </div>
 
                     </div>
 
 
-                    <div class="campo">
-
-                        <label for="quantidadeEstoqueInput">
-                            Quantidade
-                        </label>
-
-                        <input
-                            type="number"
-                            id="quantidadeEstoqueInput"
-                            min="1"
-                            placeholder="Ex: 30"
-                            required
-                        >
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="btn-principal"
-                    >
-                        Adicionar estoque
+                    <button type="submit" class="botao principal">
+                        Cadastrar produto
                     </button>
 
                 </form>
@@ -829,53 +627,52 @@
             </div>
 
 
-            <div
-                id="gradeEstoque"
-                class="grade-estoque"
-            >
-                <!-- Produtos criados pelo JS -->
+            <div class="painel">
+
+                <div class="painel-topo">
+
+                    <div>
+                        <span class="subtitulo">Produtos cadastrados</span>
+                        <h3>Estoque atual</h3>
+                    </div>
+
+                </div>
+
+
+                <div id="gradeEstoque" class="grade-estoque">
+                </div>
+
             </div>
 
         </section>
 
 
-
-        <!-- ==================================================
+        <!-- =========================
              CONFIGURAÇÕES
-        ================================================== -->
+        ========================== -->
 
         <section id="configuracoes" class="secao">
 
-            <div class="cabecalho-secao">
+            <div class="titulo-secao">
 
                 <div>
-
-                    <span class="mini-titulo">
-                        CONFIGURAÇÕES
-                    </span>
-
-                    <h2>
-                        Configurações do sistema
-                    </h2>
-
-                    <p>
-                        Personalize os objetivos financeiros.
-                    </p>
-
+                    <span class="subtitulo">Sistema</span>
+                    <h3>Configurações</h3>
                 </div>
 
             </div>
 
 
-            <div class="painel configuracao-painel">
+            <div class="painel formulario-painel">
 
-                <h3>
-                    Meta mensal
-                </h3>
+                <div class="painel-topo">
 
-                <p>
-                    Defina quanto deseja faturar por mês.
-                </p>
+                    <div>
+                        <span class="subtitulo">Objetivo financeiro</span>
+                        <h3>Definir meta mensal</h3>
+                    </div>
+
+                </div>
 
 
                 <form id="formMeta">
@@ -883,25 +680,22 @@
                     <div class="campo">
 
                         <label for="valorMeta">
-                            Valor da meta
+                            Meta de faturamento
                         </label>
 
                         <input
                             type="number"
                             id="valorMeta"
-                            min="1"
+                            min="0"
                             step="0.01"
-                            placeholder="1000.00"
+                            placeholder="Ex: 1000"
                             required
                         >
 
                     </div>
 
 
-                    <button
-                        type="submit"
-                        class="btn-principal"
-                    >
+                    <button type="submit" class="botao principal">
                         Salvar meta
                     </button>
 
@@ -910,21 +704,23 @@
             </div>
 
 
-            <div class="painel perigo-painel">
+            <div class="painel perigo">
 
-                <h3>
-                    Área de manutenção
-                </h3>
+                <div class="painel-topo">
+
+                    <div>
+                        <span class="subtitulo">Zona de perigo</span>
+                        <h3>Dados do sistema</h3>
+                    </div>
+
+                </div>
 
                 <p>
-                    Estas ações são permanentes.
+                    Esta ação apagará vendas, gastos, estoque e metas
+                    salvos neste navegador.
                 </p>
 
-
-                <button
-                    id="limparDados"
-                    class="btn-perigo"
-                >
+                <button id="limparDados" class="botao perigo-botao">
                     Apagar todos os dados
                 </button>
 
@@ -935,34 +731,22 @@
     </main>
 
 
-    <!-- ================= NOTIFICAÇÃO ================= -->
+    <!-- =========================
+         NOTIFICAÇÃO
+    ========================== -->
 
-    <div
-        id="notificacao"
-        class="notificacao"
-    >
-        <span id="textoNotificacao">
-            Salvo!
-        </span>
+    <div id="notificacao" class="notificacao">
+
+        <span>✓</span>
+
+        <p id="textoNotificacao">
+            Operação realizada.
+        </p>
+
     </div>
-
-
-    <footer>
-
-        <span>
-            Moreira Doces & Gelados
-        </span>
-
-        <small>
-            Controle pessoal de vendas
-        </small>
-
-    </footer>
 
 
     <script src="script.js"></script>
 
 </body>
-
 </html>
-
