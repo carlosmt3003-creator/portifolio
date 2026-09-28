@@ -9,97 +9,574 @@
     <title>Moreira Doces & Gelados</title>
 
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="img/Moreira.jpeg" type="image/x-icon">
 </head>
 
 <body>
 
-    <header>
-        <div>
-            <h1>Moreira Doces & Gelados</h1>
-            <p>Controle de vendas, gastos e estoque</p>
+    <!-- ================= HEADER ================= -->
+
+    <header class="topo">
+
+        <div class="logo-area">
+
+            <div class="logo">
+                MD
+            </div>
+
+            <div>
+                <h1>Moreira</h1>
+                <span>Doces & Gelados</span>
+            </div>
+
         </div>
+
+
+        <div class="data-atual">
+
+            <span>Controle financeiro</span>
+
+            <strong id="dataAtual">
+                --
+            </strong>
+
+        </div>
+
     </header>
 
 
+    <!-- ================= MENU ================= -->
+
+    <nav class="menu">
+
+        <button class="menu-item ativo" data-secao="dashboard">
+            <span>▦</span>
+            Dashboard
+        </button>
+
+        <button class="menu-item" data-secao="vendas">
+            <span>↗</span>
+            Vendas
+        </button>
+
+        <button class="menu-item" data-secao="gastos">
+            <span>↘</span>
+            Gastos
+        </button>
+
+        <button class="menu-item" data-secao="estoque">
+            <span>▣</span>
+            Estoque
+        </button>
+
+        <button class="menu-item" data-secao="configuracoes">
+            <span>⚙</span>
+            Configurações
+        </button>
+
+    </nav>
+
+
+    <!-- ================= CONTEÚDO ================= -->
+
     <main>
 
-        <!-- RESUMO -->
 
-        <section class="resumo">
+        <!-- ==================================================
+             DASHBOARD
+        ================================================== -->
 
-            <div class="card">
-                <span>Faturamento</span>
-                <strong id="faturamento">R$ 0,00</strong>
+        <section id="dashboard" class="secao ativa">
+
+            <div class="cabecalho-secao">
+
+                <div>
+
+                    <span class="mini-titulo">
+                        VISÃO GERAL
+                    </span>
+
+                    <h2>
+                        Dashboard financeiro
+                    </h2>
+
+                    <p>
+                        Acompanhe o desempenho do seu negócio.
+                    </p>
+
+                </div>
+
+
+                <div class="seletor-mes">
+
+                    <label for="mesSelecionado">
+                        Período
+                    </label>
+
+                    <input
+                        type="month"
+                        id="mesSelecionado"
+                    >
+
+                </div>
+
             </div>
 
-            <div class="card">
-                <span>Gastos</span>
-                <strong id="totalGastos">R$ 0,00</strong>
+
+            <!-- ================= CARDS ================= -->
+
+            <div class="cards-financeiros">
+
+
+                <article class="card financeiro faturamento">
+
+                    <div class="card-topo">
+
+                        <span>
+                            FATURAMENTO
+                        </span>
+
+                        <div class="icone">
+                            $
+                        </div>
+
+                    </div>
+
+                    <strong id="faturamentoMes">
+                        R$ 0,00
+                    </strong>
+
+                    <div class="card-rodape">
+
+                        <span>
+                            Vendas realizadas
+                        </span>
+
+                        <b id="quantidadeVendas">
+                            0
+                        </b>
+
+                    </div>
+
+                </article>
+
+
+                <article class="card financeiro gastos">
+
+                    <div class="card-topo">
+
+                        <span>
+                            GASTOS
+                        </span>
+
+                        <div class="icone">
+                            −
+                        </div>
+
+                    </div>
+
+                    <strong id="gastosMes">
+                        R$ 0,00
+                    </strong>
+
+                    <div class="card-rodape">
+
+                        <span>
+                            Despesas registradas
+                        </span>
+
+                        <b id="quantidadeGastos">
+                            0
+                        </b>
+
+                    </div>
+
+                </article>
+
+
+                <article class="card financeiro lucro">
+
+                    <div class="card-topo">
+
+                        <span>
+                            LUCRO
+                        </span>
+
+                        <div class="icone">
+                            ↑
+                        </div>
+
+                    </div>
+
+                    <strong id="lucroMes">
+                        R$ 0,00
+                    </strong>
+
+                    <div class="card-rodape">
+
+                        <span>
+                            Resultado do mês
+                        </span>
+
+                        <b id="margemLucro">
+                            0%
+                        </b>
+
+                    </div>
+
+                </article>
+
+
+                <article class="card financeiro estoque-card">
+
+                    <div class="card-topo">
+
+                        <span>
+                            ESTOQUE
+                        </span>
+
+                        <div class="icone">
+                            #
+                        </div>
+
+                    </div>
+
+                    <strong id="quantidadeEstoque">
+                        0
+                    </strong>
+
+                    <div class="card-rodape">
+
+                        <span>
+                            Unidades disponíveis
+                        </span>
+
+                        <b id="produtosEstoque">
+                            0 produtos
+                        </b>
+
+                    </div>
+
+                </article>
+
             </div>
 
-            <div class="card">
-                <span>Lucro</span>
-                <strong id="lucro">R$ 0,00</strong>
+
+            <!-- ================= META ================= -->
+
+            <div class="grid-dashboard">
+
+
+                <article class="painel meta-painel">
+
+                    <div class="painel-header">
+
+                        <div>
+
+                            <span class="mini-titulo">
+                                OBJETIVO
+                            </span>
+
+                            <h3>
+                                Meta mensal
+                            </h3>
+
+                        </div>
+
+                        <span
+                            id="statusMeta"
+                            class="status-meta"
+                        >
+                            Em andamento
+                        </span>
+
+                    </div>
+
+
+                    <div class="meta-valores">
+
+                        <div>
+
+                            <span>
+                                Faturado
+                            </span>
+
+                            <strong id="metaFaturado">
+                                R$ 0,00
+                            </strong>
+
+                        </div>
+
+                        <div class="meta-alvo">
+
+                            <span>
+                                Meta
+                            </span>
+
+                            <strong id="metaValor">
+                                R$ 1.000,00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="progresso">
+
+                        <div
+                            id="barraMeta"
+                            class="progresso-barra"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="progresso-info">
+
+                        <span>
+                            <b id="porcentagemMeta">
+                                0%
+                            </b>
+                            da meta alcançada
+                        </span>
+
+                        <span id="faltaMeta">
+                            Faltam R$ 1.000,00
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ================= RESUMO ================= -->
+
+                <article class="painel resumo-painel">
+
+                    <div class="painel-header">
+
+                        <div>
+
+                            <span class="mini-titulo">
+                                RESULTADO
+                            </span>
+
+                            <h3>
+                                Saúde financeira
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="saude">
+
+                        <div
+                            id="indicadorSaude"
+                            class="indicador-saude"
+                        >
+                            —
+                        </div>
+
+                        <div>
+
+                            <strong id="textoSaude">
+                                Sem movimentação
+                            </strong>
+
+                            <p id="descricaoSaude">
+                                Registre vendas e gastos para acompanhar seu resultado.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
             </div>
 
-            <div class="card">
-                <span>Itens em estoque</span>
-                <strong id="totalEstoque">0</strong>
-            </div>
+
+            <!-- ================= GRÁFICO ================= -->
+
+            <article class="painel grafico-painel">
+
+                <div class="painel-header">
+
+                    <div>
+
+                        <span class="mini-titulo">
+                            ANÁLISE
+                        </span>
+
+                        <h3>
+                            Desempenho financeiro
+                        </h3>
+
+                    </div>
+
+
+                    <div class="legenda">
+
+                        <span>
+                            <i class="legenda-venda"></i>
+                            Faturamento
+                        </span>
+
+                        <span>
+                            <i class="legenda-gasto"></i>
+                            Gastos
+                        </span>
+
+                        <span>
+                            <i class="legenda-lucro"></i>
+                            Lucro
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="grafico"
+                    class="grafico"
+                >
+                    <!-- JavaScript cria o gráfico -->
+                </div>
+
+            </article>
+
+
+            <!-- ================= ÚLTIMAS MOVIMENTAÇÕES ================= -->
+
+            <article class="painel">
+
+                <div class="painel-header">
+
+                    <div>
+
+                        <span class="mini-titulo">
+                            ATIVIDADE
+                        </span>
+
+                        <h3>
+                            Últimas movimentações
+                        </h3>
+
+                    </div>
+
+                    <button
+                        class="btn-link"
+                        data-secao="vendas"
+                    >
+                        Ver tudo
+                    </button>
+
+                </div>
+
+
+                <div id="ultimasMovimentacoes">
+
+                    <div class="vazio">
+                        Nenhuma movimentação registrada.
+                    </div>
+
+                </div>
+
+            </article>
 
         </section>
 
 
-        <!-- FORMULÁRIOS -->
 
-        <section class="formularios">
+        <!-- ==================================================
+             VENDAS
+        ================================================== -->
 
-            <!-- VENDA -->
+        <section id="vendas" class="secao">
 
-            <div class="caixa">
+            <div class="cabecalho-secao">
 
-                <h2>Registrar venda</h2>
+                <div>
+
+                    <span class="mini-titulo">
+                        MOVIMENTAÇÕES
+                    </span>
+
+                    <h2>
+                        Registrar venda
+                    </h2>
+
+                    <p>
+                        Registre suas vendas e acompanhe o faturamento.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="formulario-painel painel">
 
                 <form id="formVenda">
 
-                    <label for="produtoVenda">
-                        Produto
-                    </label>
+                    <div class="campo">
 
-                    <input
-                        type="text"
-                        id="produtoVenda"
-                        placeholder="Ex: Chupa-chupa"
-                        required
+                        <label for="produtoVenda">
+                            Produto
+                        </label>
+
+                        <input
+                            type="text"
+                            id="produtoVenda"
+                            placeholder="Ex: Chupa-chupa de morango"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="quantidadeVenda">
+                            Quantidade
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantidadeVenda"
+                            min="1"
+                            placeholder="Ex: 5"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="valorVenda">
+                            Valor total
+                        </label>
+
+                        <input
+                            type="number"
+                            id="valorVenda"
+                            min="0.01"
+                            step="0.01"
+                            placeholder="R$ 0,00"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn-principal"
                     >
-
-                    <label for="quantidadeVenda">
-                        Quantidade
-                    </label>
-
-                    <input
-                        type="number"
-                        id="quantidadeVenda"
-                        min="1"
-                        placeholder="Ex: 5"
-                        required
-                    >
-
-                    <label for="valorVenda">
-                        Valor total da venda
-                    </label>
-
-                    <input
-                        type="number"
-                        id="valorVenda"
-                        min="0.01"
-                        step="0.01"
-                        placeholder="Ex: 10.00"
-                        required
-                    >
-
-                    <button type="submit">
                         Registrar venda
                     </button>
 
@@ -108,39 +585,123 @@
             </div>
 
 
-            <!-- GASTO -->
+            <div class="painel tabela-painel">
 
-            <div class="caixa">
+                <div class="painel-header">
 
-                <h2>Registrar gasto</h2>
+                    <div>
+
+                        <h3>
+                            Histórico de vendas
+                        </h3>
+
+                    </div>
+
+                    <span id="totalTabelaVendas">
+                        0 vendas
+                    </span>
+
+                </div>
+
+
+                <div class="tabela-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Data</th>
+                                <th>Produto</th>
+                                <th>Quantidade</th>
+                                <th>Valor</th>
+                                <th></th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="tabelaVendas">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             GASTOS
+        ================================================== -->
+
+        <section id="gastos" class="secao">
+
+            <div class="cabecalho-secao">
+
+                <div>
+
+                    <span class="mini-titulo">
+                        DESPESAS
+                    </span>
+
+                    <h2>
+                        Registrar gasto
+                    </h2>
+
+                    <p>
+                        Controle os custos utilizados no seu negócio.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="formulario-painel painel">
 
                 <form id="formGasto">
 
-                    <label for="descricaoGasto">
-                        Descrição
-                    </label>
+                    <div class="campo">
 
-                    <input
-                        type="text"
-                        id="descricaoGasto"
-                        placeholder="Ex: Leite condensado"
-                        required
+                        <label for="descricaoGasto">
+                            Descrição
+                        </label>
+
+                        <input
+                            type="text"
+                            id="descricaoGasto"
+                            placeholder="Ex: Leite condensado"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="valorGasto">
+                            Valor
+                        </label>
+
+                        <input
+                            type="number"
+                            id="valorGasto"
+                            min="0.01"
+                            step="0.01"
+                            placeholder="R$ 0,00"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn-principal"
                     >
-
-                    <label for="valorGasto">
-                        Valor
-                    </label>
-
-                    <input
-                        type="number"
-                        id="valorGasto"
-                        min="0.01"
-                        step="0.01"
-                        placeholder="Ex: 15.00"
-                        required
-                    >
-
-                    <button type="submit">
                         Registrar gasto
                     </button>
 
@@ -149,38 +710,117 @@
             </div>
 
 
-            <!-- ESTOQUE -->
+            <div class="painel tabela-painel">
 
-            <div class="caixa">
+                <div class="painel-header">
 
-                <h2>Adicionar ao estoque</h2>
+                    <h3>
+                        Histórico de gastos
+                    </h3>
+
+                    <span id="totalTabelaGastos">
+                        0 gastos
+                    </span>
+
+                </div>
+
+
+                <div class="tabela-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Data</th>
+                                <th>Descrição</th>
+                                <th>Valor</th>
+                                <th></th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="tabelaGastos">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             ESTOQUE
+        ================================================== -->
+
+        <section id="estoque" class="secao">
+
+            <div class="cabecalho-secao">
+
+                <div>
+
+                    <span class="mini-titulo">
+                        INVENTÁRIO
+                    </span>
+
+                    <h2>
+                        Controle de estoque
+                    </h2>
+
+                    <p>
+                        Acompanhe a quantidade de produtos disponíveis.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="formulario-painel painel">
 
                 <form id="formEstoque">
 
-                    <label for="produtoEstoque">
-                        Produto
-                    </label>
+                    <div class="campo">
 
-                    <input
-                        type="text"
-                        id="produtoEstoque"
-                        placeholder="Ex: Chupa-chupa"
-                        required
+                        <label for="produtoEstoque">
+                            Produto
+                        </label>
+
+                        <input
+                            type="text"
+                            id="produtoEstoque"
+                            placeholder="Ex: Chupa-chupa de limão"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="quantidadeEstoqueInput">
+                            Quantidade
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantidadeEstoqueInput"
+                            min="1"
+                            placeholder="Ex: 30"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn-principal"
                     >
-
-                    <label for="quantidadeEstoque">
-                        Quantidade
-                    </label>
-
-                    <input
-                        type="number"
-                        id="quantidadeEstoque"
-                        min="1"
-                        placeholder="Ex: 20"
-                        required
-                    >
-
-                    <button type="submit">
                         Adicionar estoque
                     </button>
 
@@ -188,132 +828,105 @@
 
             </div>
 
-        </section>
 
-
-        <!-- ESTOQUE -->
-
-        <section class="caixa estoque">
-
-            <div class="titulo-secao">
-                <h2>Estoque</h2>
-
-                <button id="btnLimparEstoque" class="btn-perigo">
-                    Limpar estoque
-                </button>
-            </div>
-
-            <div id="listaEstoque" class="lista-estoque">
-                <!-- Estoque será criado pelo JavaScript -->
+            <div
+                id="gradeEstoque"
+                class="grade-estoque"
+            >
+                <!-- Produtos criados pelo JS -->
             </div>
 
         </section>
 
 
-        <!-- GRÁFICO -->
 
-        <section class="caixa grafico">
+        <!-- ==================================================
+             CONFIGURAÇÕES
+        ================================================== -->
 
-            <h2>Resumo financeiro</h2>
+        <section id="configuracoes" class="secao">
 
-            <div class="grafico-area">
+            <div class="cabecalho-secao">
 
-                <div class="barra-item">
+                <div>
 
-                    <div class="barra-info">
-                        <span>Faturamento</span>
-                        <strong id="valorGraficoVenda">R$ 0,00</strong>
-                    </div>
+                    <span class="mini-titulo">
+                        CONFIGURAÇÕES
+                    </span>
 
-                    <div class="barra-fundo">
-                        <div
-                            id="barraVenda"
-                            class="barra venda"
-                        ></div>
-                    </div>
+                    <h2>
+                        Configurações do sistema
+                    </h2>
 
-                </div>
-
-
-                <div class="barra-item">
-
-                    <div class="barra-info">
-                        <span>Gastos</span>
-                        <strong id="valorGraficoGasto">R$ 0,00</strong>
-                    </div>
-
-                    <div class="barra-fundo">
-                        <div
-                            id="barraGasto"
-                            class="barra gasto"
-                        ></div>
-                    </div>
-
-                </div>
-
-
-                <div class="barra-item">
-
-                    <div class="barra-info">
-                        <span>Lucro</span>
-                        <strong id="valorGraficoLucro">R$ 0,00</strong>
-                    </div>
-
-                    <div class="barra-fundo">
-                        <div
-                            id="barraLucro"
-                            class="barra lucro"
-                        ></div>
-                    </div>
+                    <p>
+                        Personalize os objetivos financeiros.
+                    </p>
 
                 </div>
 
             </div>
 
-        </section>
+
+            <div class="painel configuracao-painel">
+
+                <h3>
+                    Meta mensal
+                </h3>
+
+                <p>
+                    Defina quanto deseja faturar por mês.
+                </p>
 
 
-        <!-- HISTÓRICO -->
+                <form id="formMeta">
 
-        <section class="caixa historico">
+                    <div class="campo">
 
-            <div class="titulo-secao">
+                        <label for="valorMeta">
+                            Valor da meta
+                        </label>
 
-                <h2>Histórico</h2>
+                        <input
+                            type="number"
+                            id="valorMeta"
+                            min="1"
+                            step="0.01"
+                            placeholder="1000.00"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn-principal"
+                    >
+                        Salvar meta
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div class="painel perigo-painel">
+
+                <h3>
+                    Área de manutenção
+                </h3>
+
+                <p>
+                    Estas ações são permanentes.
+                </p>
+
 
                 <button
-                    id="btnLimparHistorico"
+                    id="limparDados"
                     class="btn-perigo"
                 >
-                    Limpar histórico
+                    Apagar todos os dados
                 </button>
-
-            </div>
-
-
-            <div class="tabela-container">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-                            <th>Tipo</th>
-                            <th>Descrição</th>
-                            <th>Quantidade</th>
-                            <th>Valor</th>
-                            <th>Ação</th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody id="listaHistorico">
-
-                        <!-- Registros aparecerão aqui -->
-
-                    </tbody>
-
-                </table>
 
             </div>
 
@@ -322,8 +935,28 @@
     </main>
 
 
+    <!-- ================= NOTIFICAÇÃO ================= -->
+
+    <div
+        id="notificacao"
+        class="notificacao"
+    >
+        <span id="textoNotificacao">
+            Salvo!
+        </span>
+    </div>
+
+
     <footer>
-        Moreira Doces & Gelados
+
+        <span>
+            Moreira Doces & Gelados
+        </span>
+
+        <small>
+            Controle pessoal de vendas
+        </small>
+
     </footer>
 
 
